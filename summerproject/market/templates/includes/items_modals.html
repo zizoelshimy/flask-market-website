@@ -1,0 +1,73 @@
+<!-- in this file i create class modal for each button i want as more info and purchase -->
+<!-- includes/items_modals.html -->
+<style>
+  .modal-content {
+    background-color: #212121;
+  }
+</style>
+<!--first More Info button -->
+<div class="modal fade" id="Modal-MoreInfo-{{ item.id }}"
+     tabindex="-1"
+     aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="ModalLabel"> <!-- Modal Title when it is clicked it appeare with the name of the item -->
+          {{ item.name }}
+        </h5>
+        <button type="button" class="close"
+                data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <!-- Modal body when it is clicked it appeare with the description of the item -->
+      <div class="modal-body"> <!-- Modal body when it is clicked it appeare with the description of the item -->
+        {{ item.description }}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary"
+                data-dismiss="modal">Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--seconde Modal body when it is clicked for purchase confirmation -->
+<!-- Purchase Confirm -->
+<div class="modal fade" id="Modal-PurchaseConfirm-{{ item.id }}" <!-- Modal-PurchaseConfirm is the identifier of modal class it should be different from indentifire of the above class-->
+     tabindex="-1"
+     aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="ModalLabel">
+          {{ item.name }}
+        </h5>
+        <button type="button" class="close"
+                data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <form method="POST">
+              {{ purchase_form.hidden_tag() }}
+              <h4 class="text-center">
+                  Are you sure you want to buy {{ item.name }} for {{ item.price }}$?
+              </h4>
+              <h6>
+                  by clicking the purchase button you will buy this item
+              </h6>
+              <input id="purchased_item" name="purchased_item" type="hidden" value={{ item.name }}>
+              {{ purchase_form.submit(class="btn btn-outline-success btn btn-block") }}
+          </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary"
+                data-dismiss="modal">Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+

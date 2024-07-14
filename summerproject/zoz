@@ -1,0 +1,63 @@
+from app import db, Item, app
+from market import app, db
+from market.models import Item,user
+# Create all tables
+with app.app_context():
+    db.create_all()
+
+# Create and add item3 to the session, then commit it
+with app.app_context():
+    item14 = Item(name='books', price=50, barcode='112233445593', description='studing')
+    db.session.add(item14)
+    db.session.commit()
+
+# Verify the item has been added
+with app.app_context():
+    added_item = Item.query.filter_by(name='electronics').first()
+    print(added_item)
+
+from app import app, db, Item  # Import your Flask app instance, db, and Item model
+
+# Query all items within the application context
+with app.app_context():
+    items = Item.query.all()
+    for item in items:
+        print(item)
+        
+with app.app_context():       
+     for item in Item.query.all():
+          item.name
+          item.price
+          item.description
+          item.id
+          item.barcode
+          #this commands to give item1 to owner moataz
+with app.app_context():
+     item2.owner=user.query.filter_by(username='moataz').first().id
+     db.session.add(item2)
+     db.session.commit()   
+     #to check if the specific item is for user           
+with app.app_context():
+    item8 = Item.query.filter_by(name='moataz').first()
+
+    if item8:
+        # Access item1's owner attribute
+        print(f"Item owner: {item8.owner}")
+    else:
+        print("Item not found")
+:with app.app_context()
+      i=Item.query.filter_by(name='iphone').first()
+      i.owned_user
+
+#<user 1>
+#to add user 
+from market.models import user
+u2=user(username='ahmed',password_hash='666666',email_address='moataz@gmail.com')
+db.session.add(u2) 
+#to save user in data base
+with app.app_context():
+  db.session.add(u2)
+  db.session.commit()
+  #to check the number of users
+  with app.app_context():  
+    user.query.all()

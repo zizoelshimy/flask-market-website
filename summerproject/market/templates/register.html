@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}
+Register Page
+{% endblock %}
+{% block content %}
+<! -- the post request is kind of request is going to affect the database of the website  -->
+<! --the div make the the username and password to be in the same line and the form-control is the css of the username and password and form-control-lg is the css of the username and password -->
+<body class="text-center">
+<div class="container">
+    <form method="POST" class="form-register" style="color:white">
+        {{form.hidden_tag()}}<!--this is make safe from the hackers-->
+        <img class="mb-4" src="{{ url_for('static', filename='last1.png') }}" alt="" style="width: 450px; height: auto;">
+        <h1 class="h3 mb-3 font-weight-normal">
+            Please Create your Account
+        </h1>
+        <br>
+<form method="POST" class="form-register" style="color:white">
+    {{form.username.label}}
+    {{form.username(class="form-control",placeholder="User Name")}}
+
+    {{form.email_address.label}}
+    {{form.email_address(class="form-control",placeholder="Email_Address")}}
+
+    {{form.password_hash.label}}
+    {{form.password_hash(class="form-control",placeholder="Password")}}
+
+    {{form.password_confirmation.label}}
+    {{form.password_confirmation(class="form-control",placeholder="Confirm")}}
+    <br>
+    <div class="checkbox mb-3">
+        <h6>already have account?</h6>
+        <a class="btn btn-sm btn-secondary" href="{{ url_for('loginpage') }}">Login</a>
+     </div>
+
+    {{form.submit(class="btn btn-lg btn-block btn-primary")}}
+</form>
+</body>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}
+Register Page
+{% endblock %}
+{% block content %}
+<! -- the post request is kind of request is going to affect the database of the website  -->
+<! --the div make the the username and password to be in the same line and the form-control is the css of the username and password and form-control-lg is the css of the username and password -->
+<body class="text-center"> 
+    <div class="container"><! --the div make the the username and password to be in the same line and the form-control is the css of the username and password and form-control-lg is the css of the username and password -->
+        <form method="POST" class="form-signin" style="color:white">
+            {{ form.hidden_tag() }}
+            <img class="mb-4" src="{{ url_for('static', filename='last1.png') }}" alt="" style="width: 450px; height: auto;">
+            <h1 class="h3 mb-3 font-weight-normal">
+                Please Login
+            </h1>
+            <br>
+            {{ form.username.label() }}
+            {{ form.username(class="form-control", placeholder="User Name") }}
+
+            {{ form.password.label() }}
+            {{ form.password(class="form-control", placeholder="Password") }}
+
+            <br>
+
+
+            <div class="checkbox mb-3">
+               <h6>Do not have an account?</h6>
+               <a class="btn btn-sm btn-secondary" href="{{ url_for('registerpage') }}">Register</a>
+            </div>
+
+            {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
+
+        </form>
+    </div>
+</body>
+{% endblock %}
