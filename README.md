@@ -1,1 +1,2 @@
 # flask-market-website
+This project is a marketing website built using Flask for the backend, SQLAlchemy for database management, and HTML with Bootstrap for the frontend. The website is designed to provide a user-friendly interface for showcasing products or services and includes features such as user authentication, dynamic content management, and responsive design.and make users able to purchase and sell items 
